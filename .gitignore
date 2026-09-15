@@ -1,0 +1,33 @@
+# Secretos de Streamlit (client_id/client_secret de OAuth) - nunca se suben
+.streamlit/
+
+# Service Account antigua (ya no la usa la app, pero sigue siendo una clave real)
+credenciales.json
+
+# Artefactos generados en local
+index_results.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.Python
+build/
+dist/
+
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Caches de herramientas
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Sistema operativo / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
