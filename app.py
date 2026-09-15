@@ -124,17 +124,15 @@ def login_screen() -> None:
         prompt="consent",
         state=state,
     )
-    # target="_top" (no "_self", no st.link_button): Streamlit Cloud sirve la app
-    # dentro de un iframe propio. "_self" navegaría ese iframe, y Google bloquea
-    # su pantalla de login si detecta que se carga enmarcada (anti-clickjacking),
-    # de ahí el 403. "_top" rompe el iframe y navega la pestaña real.
-    st.markdown(
-        f'<a href="{auth_url}" target="_top" style="display:inline-block;'
-        "padding:0.55rem 1.1rem;background-color:#4285F4;color:#ffffff;"
-        'border-radius:0.5rem;text-decoration:none;font-weight:600;">'
-        "🔐 Iniciar sesión con Google</a>",
-        unsafe_allow_html=True,
-    )
+    # st.link_button (no <a> con unsafe_allow_html): Streamlit Cloud sirve la app
+    # dentro de un iframe propio, y su frontend intercepta el click normal sobre
+    # un <a> escrito a mano (por eso el botón parecía "no hacer nada" con el
+    # click izquierdo, pero sí con "abrir en pestaña nueva"). st.link_button abre
+    # siempre en pestaña nueva de verdad -> nunca queda enmarcado, y evita el 403
+    # de Google (bloquea su login si detecta que se carga dentro de un iframe).
+    # El state/code_verifier son autoverificables (sin session_state), así que
+    # no pasa nada porque la vuelta de Google aterrice en una pestaña distinta.
+    st.link_button("🔐 Iniciar sesión con Google", auth_url, type="primary")
 
 
 def parse_urls(raw_text: str) -> list[str]:
