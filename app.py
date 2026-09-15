@@ -189,7 +189,14 @@ def main_app() -> None:
         )
         return
 
-    site_url = st.selectbox("Propiedad de Search Console a auditar", sites)
+    site_url = st.selectbox(
+        "Propiedad de Search Console a auditar",
+        sites,
+        accept_new_options=False,
+    )
+    if site_url is None:
+        st.info("Selecciona una propiedad de la lista para continuar.")
+        return
 
     urls_raw = st.text_area(
         "URLs a comprobar (una por línea)",
