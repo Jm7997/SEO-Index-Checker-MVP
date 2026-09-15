@@ -1,0 +1,1 @@
+# SEO-Index-Checker-MVP
