@@ -1,5 +1,5 @@
 # Secretos de Streamlit (client_id/client_secret de OAuth) - nunca se suben
-.streamlit/
+.streamlit/secrets.toml
 
 # Service Account antigua (ya no la usa la app, pero sigue siendo una clave real)
 credenciales.json

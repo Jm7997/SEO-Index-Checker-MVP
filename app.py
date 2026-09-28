@@ -240,3 +240,7 @@ if "credentials" not in st.session_state:
     login_screen()
 else:
     main_app()
+
+_LEGAL_BASE = "https://jm7997.github.io/SEO-Index-Checker-MVP"
+st.divider()
+st.caption(f"[Privacidad]({_LEGAL_BASE}/privacidad.html) · [Términos y aviso legal]({_LEGAL_BASE}/terminos.html)")
